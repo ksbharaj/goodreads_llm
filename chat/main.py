@@ -29,7 +29,7 @@ dimension = 1536
 
 pineconeindex = pinecone.Index(index_name)
 
-COMPLETIONS_MODEL = "gpt-4"
+COMPLETIONS_MODEL = "gpt-3.5-turbo-16k-0613"
 EMBEDDING_MODEL = "text-embedding-ada-002"
 
 COMPLETIONS_API_PARAMS = {
