@@ -29,13 +29,13 @@ dimension = 1536
 
 pineconeindex = pinecone.Index(index_name)
 
-COMPLETIONS_MODEL = "gpt-3.5-turbo"
+COMPLETIONS_MODEL = "gpt-4"
 EMBEDDING_MODEL = "text-embedding-ada-002"
 
 COMPLETIONS_API_PARAMS = {
     # We use temperature of 0.0 because it gives the most predictable, factual answer.
     "temperature": 0.0,  
-    "max_tokens": 400,
+    "max_tokens": 300,
     "model": COMPLETIONS_MODEL,
 }
 
@@ -68,7 +68,7 @@ def get_embedding(text, model):
     )
     return result["data"][0]["embedding"]
 
-MAX_SECTION_LEN = 2500 #in tokens
+MAX_SECTION_LEN = 1750 #in tokens
 SEPARATOR = "\n"
 ENCODING = "cl100k_base"  # encoding for text-embedding-ada-002
 
@@ -100,7 +100,7 @@ def construct_prompt_pinecone(question):
             #   document_section = str(_[0] + _[1])      
             chosen_sections.append(SEPARATOR + document_section)
 
-            chosen_sections_length += num_tokens_from_string(str(document_section), "gpt2")
+            chosen_sections_length += num_tokens_from_string(str(document_section), "cl100k_base")
 
     for match in randomize_array(res['matches'][-18:]):
         #print(f"{match['score']:.2f}: {match['metadata']['text']}")
@@ -110,7 +110,7 @@ def construct_prompt_pinecone(question):
             #   document_section = str(_[0] + _[1])      
             chosen_sections.append(SEPARATOR + document_section)
 
-            chosen_sections_length += num_tokens_from_string(str(document_section), "gpt2")
+            chosen_sections_length += num_tokens_from_string(str(document_section), "cl100k_base")
 
 
     # Useful diagnostic information
@@ -153,7 +153,7 @@ def summarize_past_conversation(content):
 
 COMPLETIONS_API_PARAMS = {
         "temperature": 0.0,
-        "max_tokens": 500,
+        "max_tokens": 350,
         "model": COMPLETIONS_MODEL,
     }
 
