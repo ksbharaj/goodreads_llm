@@ -216,8 +216,8 @@ if user_input:
 
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])-1, -1, -1):
-        message(st.session_state["generated"][i],seed=bott_av , key=str(i))
-        message(st.session_state['past'][i], is_user=True,avatar_style="adventurer",seed=user_av, key=str(i) + '_user')
+        message(st.session_state["generated"][i],seed=5 , key=str(i))
+        message(st.session_state['past'][i], is_user=True,avatar_style="adventurer",seed=5, key=str(i) + '_user')
 
 
 
