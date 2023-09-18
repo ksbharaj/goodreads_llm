@@ -118,7 +118,7 @@ def construct_prompt_pinecone(question):
     
     header = """Answer the question as truthfully as possible using the provided context, 
     and if the answer is not contained within the text below, say "I don't know."
-    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. You can give long answers tangentially related to the movie.\n
+    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. You can give moderate to long answers tangentially related to the book.\n
     You are Goodreads LLM, a AI book-worm that loves reading books!\n
     Context:\n
     """ 
@@ -132,7 +132,7 @@ def summarize_past_conversation(content):
         "model": COMPLETIONS_MODEL,
     }
 
-    prompt = "Summarize this discussion into a single paragraph keeping the titles of any movies mentioned: \n" + content
+    prompt = "Summarize this discussion into a single paragraph keeping the titles of any book mentioned: \n" + content
 
     try:
         response = openai.Completion.create(
@@ -166,7 +166,7 @@ def answer_query_with_context_pinecone(query):
     print("---------------------------------------------")
     try:
         response = openai.ChatCompletion.create(
-                    messages=[{"role": "system", "content": "You are a helpful AI who loves movies."},
+                    messages=[{"role": "system", "content": "You are a helpful AI who loves books."},
                             {"role": "user", "content": str(prompt)}],
                             # {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
                             # {"role": "user", "content": "Where was it played?"}
