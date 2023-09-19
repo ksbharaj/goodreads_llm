@@ -120,7 +120,7 @@ def construct_prompt_pinecone(question):
     and if the answer is not contained within the text below, say "I don't know". Also, if uncertain or if you think you are hallucinating,
     again just say "I don't know". Again, it is very important to answer as truthfully as possible.
     
-    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. Try to keep your answer to less than 50 words.\n
+    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. Try to keep your answer to less than 80 words.\n
     You are Goodreads LLM, an AI book-worm that loves reading books!\n
     Context:\n
     """ 
