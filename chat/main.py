@@ -35,7 +35,7 @@ EMBEDDING_MODEL = "text-embedding-ada-002"
 COMPLETIONS_API_PARAMS = {
     # We use temperature of 0.0 because it gives the most predictable, factual answer.
     "temperature": 0.0,  
-    "max_tokens": 300,
+    "max_tokens": 400,
     "model": COMPLETIONS_MODEL,
 }
 
@@ -68,7 +68,7 @@ def get_embedding(text, model):
     )
     return result["data"][0]["embedding"]
 
-MAX_SECTION_LEN = 1750 #in tokens
+MAX_SECTION_LEN = 1000 #in tokens
 SEPARATOR = "\n"
 ENCODING = "cl100k_base"  # encoding for text-embedding-ada-002
 
@@ -118,8 +118,8 @@ def construct_prompt_pinecone(question):
     
     header = """Answer the question as truthfully as possible using the provided context, 
     and if the answer is not contained within the text below, say "I don't know."
-    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. You can give moderate to long answers tangentially related to the book.\n
-    You are Goodreads LLM, a AI book-worm that loves reading books!\n
+    Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. Try to keep your answer to less than 25 words.\n
+    You are Goodreads LLM, an AI book-worm that loves reading books!\n
     Context:\n
     """ 
     return header + "".join(chosen_sections) 
@@ -128,7 +128,7 @@ def summarize_past_conversation(content):
 
     APPEND_COMPLETION_PARAMS = {
         "temperature": 0.0,
-        "max_tokens": 300,
+        "max_tokens": 400,
         "model": COMPLETIONS_MODEL,
     }
 
@@ -153,7 +153,7 @@ def summarize_past_conversation(content):
 
 COMPLETIONS_API_PARAMS = {
         "temperature": 0.0,
-        "max_tokens": 350,
+        "max_tokens": 500,
         "model": COMPLETIONS_MODEL,
     }
 
@@ -198,7 +198,7 @@ def clear_text():
 
 # We will get the user's input by calling the get_text function
 def get_text():
-    input_text = st.text_input("Input a question here! For example: \"Is X book good?\". \n It works best if your question contains the title of a book! You might want to be really specific, like mentioning 'Harry Potter the Book' rather than just 'Harry Potter'. Also, I have no memory of previous questions! (I'm working on this though!) 😅😊","Who are you?", key="input")
+    input_text = st.text_input("Input a question here! For example: \"Is X book good?\". \n It works best if your question contains the title of a book! You might want to be really specific, like mentioning 'Hunger Games the Book' rather than just 'Hunger Games'. Also, I have no memory of previous questions! (I'm working on this though!) 😅😊","Who are you?", key="input")
     return input_text
 
 
