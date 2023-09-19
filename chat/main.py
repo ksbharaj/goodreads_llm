@@ -43,11 +43,11 @@ with st.sidebar:
     st.markdown("# About 🙌")
     st.markdown(
         "Goodreads LLM allows you to talk to version of chatGPT \n"
-        "that has access to reviews of about 1000 books! 🎬 \n"
+        "that has access to reviews of about 10,000 books! 🎬 \n"
         )
     st.markdown(
         "Unline chatGPT, Goodreads LLM tries not to make stuff up\n"
-        "and will only answer from injected knowlege 👩‍🏫 \n"
+        "and will try answer from injected knowlege 👩‍🏫 \n"
     )
     st.markdown("---")
     st.markdown("A side project by KSB")
@@ -117,7 +117,9 @@ def construct_prompt_pinecone(question):
     #print(f"Selected {len(chosen_sections)} document sections:")
     
     header = """Answer the question as truthfully as possible using the provided context, 
-    and if the answer is not contained within the text below, say "I don't know."
+    and if the answer is not contained within the text below, say "I don't know". Also, if uncertain or if you think you are hallucinating,
+    again just say "I don't know". Again, it is very important to answer as truthfully as possible.
+    
     Answer in a very sarcastic tone and make it fun! Surprise the user with your answers. Try to keep your answer to less than 50 words.\n
     You are Goodreads LLM, an AI book-worm that loves reading books!\n
     Context:\n
