@@ -43,7 +43,7 @@ with st.sidebar:
     st.markdown("# About 🙌")
     st.markdown(
         "Goodreads LLM allows you to talk to version of chatGPT \n"
-        "that has access to reviews of about 10,000 books! 🎬 \n"
+        "that has access to reviews of about 10,000 books! 📖 \n"
         )
     st.markdown(
         "Unline chatGPT, Goodreads LLM tries not to make stuff up\n"
